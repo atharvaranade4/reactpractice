@@ -2,12 +2,12 @@ import React from "react";
 
 function TodoListItems ( { todos, removeTodo }) {
 
-    const toDoList = todos.map((i, index) => {
+    const toDoList = todos.map((todo) => {
         return (
             <>
-                <div key={index}>
-                    {i}
-                <button onClick={() => removeTodo(i)}>X</button>
+                <div key={todo.id}>
+                    {todo.text}
+                <button onClick={() => removeTodo(todo.id)}>X</button>
                 </div>
             </>
         )

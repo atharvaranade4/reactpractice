@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid'
 import TodoListForm from "./TodoListForm";
 import TodoListItems from "./TodoListItems";
 
@@ -10,13 +11,18 @@ function TodoListApp () {
 
     const addItem = (e) => {
         e.preventDefault()
+        const newTodo = {
+            id: uuidv4(),
+            text: itemToAdd
+        }
         // window.alert('Form submitted');
-        setTodos([...todos, itemToAdd])
+        setTodos([...todos, newTodo])
         setItemText('')
     }
 
-    const removeTodo = () => {
-        console.log("remove")
+    const removeItem = (id) => {
+        const newList = todos.filter((item) => item.id !== id);
+        setTodos(newList);
     }
 
     return (
@@ -29,7 +35,7 @@ function TodoListApp () {
             />
             <TodoListItems 
                 todos={todos}
-                removeTodo={removeTodo}
+                removeTodo={removeItem}
             />
         </>
     )
