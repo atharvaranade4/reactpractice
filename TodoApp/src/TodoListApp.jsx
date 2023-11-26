@@ -7,22 +7,37 @@ function TodoListApp () {
     const [itemToAdd, setItemText] = useState('');
     const [todos, setTodos] = useState([]);
 
+
     // console.log(todos)
 
     const addItem = (e) => {
-        e.preventDefault()
-        const newTodo = {
-            id: uuidv4(),
-            text: itemToAdd
+        if (itemToAdd.length > 0) {
+            e.preventDefault()
+            const newTodo = {
+                id: uuidv4(),
+                text: itemToAdd,
+                checked: false
+            }
+            // window.alert('Form submitted');
+            setTodos([...todos, newTodo])
+            setItemText('')
         }
-        // window.alert('Form submitted');
-        setTodos([...todos, newTodo])
-        setItemText('')
+        else {
+            window.alert('Please enter a todo');
+            e.preventDefault()
+        }
     }
 
     const removeItem = (id) => {
         const newList = todos.filter((item) => item.id !== id);
         setTodos(newList);
+        return newList
+    }
+
+    const completeItem = (id) => {
+        console.log(id)
+        console.log('complete')
+        document.getElementById(`todo-${id}`).children[1].style.backgroundColor= '#ff0000'
     }
 
     return (
@@ -32,10 +47,11 @@ function TodoListApp () {
                 itemToAdd={itemToAdd}
                 setItemText={setItemText}
                 addItem={addItem}
-            />
+            />               
             <TodoListItems 
                 todos={todos}
                 removeTodo={removeItem}
+                completeTodo={completeItem}
             />
         </>
     )
