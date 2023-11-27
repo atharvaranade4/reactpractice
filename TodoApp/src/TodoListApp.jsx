@@ -34,11 +34,36 @@ function TodoListApp () {
         return newList
     }
 
-    const completeItem = (id) => {
-        console.log(id)
-        console.log('complete')
-        document.getElementById(`todo-${id}`).children[1].style.backgroundColor= '#ff0000'
-    }
+    // const completeItem = (id, checked) => {
+    //     console.log(todos)
+    //     console.log('complete')
+    //     const newTodos = [...todos];            
+    //     console.log(newTodos)
+    //     console.log(newTodos.id)
+    //     // document.getElementById(`todo-${id}`).children[1].style.backgroundColor= '#ff0000'
+    // }
+
+    const completeItem = (id, checked) => {
+        setTodos((todos) => {
+            // get the index  of the item using id
+            const index = todos.findIndex(todo => todo.id === id);
+            if (index !== -1) {
+                // make shallow copy
+                const newTodos = [...todos]
+                // change check to true
+                newTodos[index].checked = checked
+                document.getElementById(`todo-${id}`).style.backgroundColor = checked ? '#ff0000' : '';
+                // get the completed todo
+                const completedTodo = newTodos[index]
+                // get uncheckedTodos
+                const uncheckedTodos = newTodos.filter((item, i) => i !== index);
+                // if checked is true, append completedTodo at the end of uncheckedTodo list, else return unchecked todo
+                return checked ? [...uncheckedTodos, completedTodo] : newTodos;
+            }
+            
+            return todos;
+        });
+      };
 
     return (
         <>
