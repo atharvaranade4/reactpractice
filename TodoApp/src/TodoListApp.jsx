@@ -19,7 +19,7 @@ function TodoListApp () {
                 checked: false
             }
             // window.alert('Form submitted');
-            setTodos([...todos, newTodo])
+            setTodos([newTodo, ...todos])
             setItemText('')
         }
         else {
@@ -43,6 +43,7 @@ function TodoListApp () {
     //     // document.getElementById(`todo-${id}`).children[1].style.backgroundColor= '#ff0000'
     // }
 
+    console.log("first todos",todos)
     const completeItem = (id, checked) => {
         setTodos((todos) => {
             // get the index  of the item using id
@@ -50,20 +51,23 @@ function TodoListApp () {
             if (index !== -1) {
                 // make shallow copy
                 const newTodos = [...todos]
+                console.log('newtodos', newTodos)
                 // change check to true
                 newTodos[index].checked = checked
-                document.getElementById(`todo-${id}`).style.backgroundColor = checked ? '#ff0000' : '';
                 // get the completed todo
                 const completedTodo = newTodos[index]
+                console.log('completedTodo', completedTodo)
                 // get uncheckedTodos
                 const uncheckedTodos = newTodos.filter((item, i) => i !== index);
+                console.log('uncheckedTodos', uncheckedTodos)
                 // if checked is true, append completedTodo at the end of uncheckedTodo list, else return unchecked todo
+                // document.getElementById(`todo-${id}`).style.color = checked ? '#ff0000' : '';
                 return checked ? [...uncheckedTodos, completedTodo] : newTodos;
             }
-            
+            console.log("second todos",todos)
             return todos;
         });
-      };
+    };
 
     return (
         <>
