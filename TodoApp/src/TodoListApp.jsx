@@ -5,11 +5,9 @@ import TodoListItems from "./TodoListItems";
 
 function TodoListApp () {
     const [itemToAdd, setItemText] = useState('');
-    const [todos, setTodos] = useState([]);
-
+    const [todos, setTodos] = useState([]);    
 
     // console.log(todos)
-
     const addItem = (e) => {
         if (itemToAdd.length > 0) {
             e.preventDefault()
@@ -34,6 +32,17 @@ function TodoListApp () {
         return newList
     }
 
+
+    const editItem = (updatedItem, id) => {
+        setTodos(
+            todos.map((todo) => {
+                if (todo.id === id) {
+                    todo.text = updatedItem
+                }
+                return todo
+            })
+        )
+    }
     // const completeItem = (id, checked) => {
     //     console.log(todos)
     //     console.log('complete')
@@ -67,6 +76,7 @@ function TodoListApp () {
             console.log("second todos",todos)
             return todos;
         });
+
     };
 
     return (
@@ -81,6 +91,7 @@ function TodoListApp () {
                 todos={todos}
                 removeTodo={removeItem}
                 completeTodo={completeItem}
+                editTodo= {editItem}
             />
         </>
     )
