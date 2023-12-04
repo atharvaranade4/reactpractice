@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 function TodoListForm ( {itemToAdd, setItemText, addItem}) {
     return (
@@ -18,3 +19,9 @@ function TodoListForm ( {itemToAdd, setItemText, addItem}) {
 }
 
 export default TodoListForm
+
+TodoListForm.propTypes = {
+    itemToAdd: PropTypes.string.isRequired,
+    setItemText: PropTypes.func.isRequired,
+    addItem: PropTypes.func.isRequired,
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 
 function TodoListItems ( { todos, removeTodo, completeTodo, editTodo }) {
     const [editing, setEditing] = useState(false)
@@ -57,3 +58,10 @@ function TodoListItems ( { todos, removeTodo, completeTodo, editTodo }) {
 }
 
 export default TodoListItems
+
+TodoListItems.propTypes = {
+    todos: PropTypes.array.isRequired,
+    removeTodo: PropTypes.func.isRequired,
+    completeTodo: PropTypes.func.isRequired,
+    editTodo: PropTypes.func.isRequired
+}
