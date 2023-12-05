@@ -1,11 +1,21 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-function CardBody () {
+function CardBody ( { cardTitle, cardDescription, hasAudioAvailable, hasMemberPreview } ) {
     return (
-        <>
-        Card Body
-        </>
+        <div>
+            { (hasAudioAvailable)? <p>Audio Available</p> : null}
+            { (hasMemberPreview)? <p>★ Member Preview</p> : null}
+            {cardTitle}
+            {cardDescription}
+        </div>
     )
 }
 
 export default CardBody
+
+CardBody.propTypes = {
+    cardTitle: PropTypes.string.isRequired, 
+    cardDescription: PropTypes.string.isRequired, 
+    hasAudioAvailable: PropTypes.bool.isRequired, 
+    hasMemberPreview: PropTypes.bool.isRequired
+}

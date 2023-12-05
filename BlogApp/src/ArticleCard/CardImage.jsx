@@ -1,11 +1,16 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-function CardImage () {
+function CardImage ({ image, altDescription }) {
     return (
-        <>
-        CardImage
-        </>
+        <div>
+            <img className='' src={image} alt={altDescription} ></img>
+        </div>
     )
 }
 
 export default CardImage
+
+CardImage.propTypes = {
+    image: PropTypes.string.isRequired,
+    altDescription: PropTypes.string.isRequired
+}
