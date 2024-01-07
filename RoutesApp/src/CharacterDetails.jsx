@@ -7,7 +7,7 @@ export default function CharacterDetails () {
     const [isLoading, toggleLoading] = useState(true)
     const [hasError, setHasError] = useState(false)
     
-    const {charId} = useParams()
+    const { charId } = useParams()
     console.log(charId)
 
     useEffect(() => {    
