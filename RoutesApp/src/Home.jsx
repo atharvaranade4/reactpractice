@@ -3,8 +3,11 @@ import { Link } from "react-router-dom"
 function Home() {
     return (
         <div>
-            <Link to = { "/characters/1" }>
-                <button> Query Star-Wars characters</button>
+            <Link to = { "/characters" }>
+                <button> Query Star-Wars planets</button>
+            </Link>
+            <Link to = { "/planets" }>
+                <button> Query Star-Wars planets</button>
             </Link>
         </div>
     )
