@@ -52,7 +52,7 @@ function CharacterList() {
     return (
         <>
             <h1>Star Wars Characters</h1>
-            <div>{peopleList}</div>
+            <div>{ peopleList }</div>
             {nextUrl && <button onClick={fetchData}>Load More</button>}
         </>
     );

@@ -4,10 +4,10 @@ function Home() {
     return (
         <div>
             <Link to = { "/characters" }>
-                <button> Query Star-Wars planets</button>
+                <button> Star-Wars characters</button>
             </Link>
             <Link to = { "/planets" }>
-                <button> Query Star-Wars planets</button>
+                <button> Star-Wars planets</button>
             </Link>
         </div>
     )

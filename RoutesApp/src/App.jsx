@@ -10,6 +10,7 @@ import PlanetsList from  './Planets/PlanetsList'
 function App() {
   return (
     <>
+    {/* <p>Navbar</p> */}
     <Routes>
       <Route path="/" element={ <Home/>} />
       <Route path="/characters/" element={ <CharacterList/> } />
@@ -19,5 +20,6 @@ function App() {
     </>
   )
 }
+ 
 
 export default App
