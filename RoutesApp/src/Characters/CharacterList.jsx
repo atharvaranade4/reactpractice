@@ -54,6 +54,7 @@ function CharacterList() {
             <h1>Star Wars Characters</h1>
             <div>{ peopleList }</div>
             {nextUrl && <button onClick={fetchData}>Load More</button>}
+            <Link to="/"><button>Home</button></Link>
         </>
     );
 }
